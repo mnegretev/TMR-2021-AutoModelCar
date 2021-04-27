@@ -1,0 +1,14 @@
+<launch>
+  <env name="GAZEBO_MODEL_PATH" value="$(find autonomos_gazebo_simulation)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+  <env name="GAZEBO_RESOURCE_PATH" value="$(find autonomos_gazebo_simulation)/worlds:$(optenv GAZEBO_RESOURCE_PATH)"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="debug" value="false"/>
+    <arg name="world_name" value="TMR2021.world"/>
+  </include>
+
+  <node name="random_start" pkg="bring_up" type="test1_start.py"/>
+</launch>
