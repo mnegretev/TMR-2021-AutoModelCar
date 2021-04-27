@@ -26,7 +26,7 @@ En cada prueba, el robot inicia en una posición y orientación aleatoria (dentr
 
 Este vehículo es una versión simulada de la versión 1 del vehículo a escala desarrollado por la Freie Universität Berlin, por lo que los nombres y tipos de tópicos corresponden con las especificaciones de dicho modelo, que se pueden consultar en https://github.com/AutoModelCar/AutoModelCarWiki/wiki.
 
-##Contacto
+## Contacto
 
 Cualquier duda o comentario sobre esta prueba, escribir al responsable técnico:
 
