@@ -1,4 +1,4 @@
-# TMR 2021 - Categoría AutoModelCar
+# TMR 2021 - AVIM
 
 Este repositorio es que se utilizará para la categoría AutoModelCar del Torneo Mexicano de Robótica 2021 a distancia. La dinámica para las pruebas se encuentra en https://www.femexrobotica.org/tmr2021/portfolio-item/autos-autonomos.
 
