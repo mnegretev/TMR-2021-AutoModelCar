@@ -92,8 +92,6 @@ def procesar_imagen_1era(message):
 
         rospy.loginfo('acomodar ' + str(grados) + ' grados')
         dir = 90 + grados
-        if dir > 100:
-            dir += 10
 
         girar(dir)
         avanzar(-150, 2)
@@ -181,6 +179,10 @@ def procesar_imagen(message):
         cv2.waitKey(3)
 
         dir = determina_direccion()
+
+        if dir > 95:
+            dir += 20
+
         girar(dir)
         avanzar(-125, 0.1)
 
@@ -189,8 +191,6 @@ def procesar_imagen(message):
 
 
 def determina_direccion():
-    global grados_anteriores
-
     pm = determina_puntos_medios()
 
     for punto in pm:
