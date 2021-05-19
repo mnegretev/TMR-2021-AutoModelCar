@@ -15,18 +15,18 @@ ALTURA = 480 - MARGEN_ABAJO
 LINEA_Y = ALTURA - 30
 MARGEN_LINEA = 25
 
-# SPEED_TOPIC = '/AutoNOMOS_mini/manual_control/speed'
-# STEERING_TOPIC = '/AutoNOMOS_mini/manual_control/steering'
+SPEED_TOPIC = '/AutoNOMOS_mini/manual_control/speed'
+STEERING_TOPIC = '/AutoNOMOS_mini/manual_control/steering'
 
 CAM_TOPIC = '/app/camera/rgb/image_raw'
-SPEED_TOPIC = '/AutoModelMini/manual_control/speed'
-STEERING_TOPIC = '/AutoModelMini/manual_control/steering'
+# SPEED_TOPIC = '/AutoModelMini/manual_control/speed'
+# STEERING_TOPIC = '/AutoModelMini/manual_control/steering'
 
-lineas_y = (
+LINEAS_Y = [
     LINEA_Y - MARGEN_LINEA,
     LINEA_Y,
     LINEA_Y + MARGEN_LINEA,
-)
+]
 
 
 def girar(grados):
@@ -72,12 +72,16 @@ def procesar_imagen_1era(message):
         print(e)
 
 
-def determina_puntos_medios():
+def determina_puntos_medios(lineas_y=LINEAS_Y, inverso=False):
     global binary_image
 
     puntos_medios = []
+    r = range(len(lineas_y))
 
-    for i in range(len(lineas_y)):
+    if inverso:
+        r = tuple(reversed(r))
+
+    for i in r:
         blancos = []
         inicio, fin = None, None
 
@@ -107,7 +111,9 @@ def determina_rectangulo():
     global binary_image, rectangulo
     RECT_X = 1
 
-    puntos_medios = determina_puntos_medios()
+    lineas = LINEAS_Y + [LINEA_Y + 2 * MARGEN_LINEA]
+
+    puntos_medios = determina_puntos_medios(lineas, True)
 
     for punto in puntos_medios:
          if punto > 0:
@@ -130,6 +136,8 @@ def procesar_imagen(message):
 
         puntos_medios = determina_puntos_medios()
         rospy.loginfo(puntos_medios)
+
+        lineas_y = LINEAS_Y
 
         for i in range(len(lineas_y)):
             cv2.line(cv_image, (0, lineas_y[i]), (640, lineas_y[i]), (0, 255, 0), 1)
