@@ -28,9 +28,10 @@ LINEAS_Y = [
     LINEA_Y + MARGEN_LINEA,
 ]
 
-
 def girar(grados):
-    gir_pub.publish(grados)
+    if grados:
+        rospy.loginfo('girando a ' + str(grados))
+        gir_pub.publish(grados)
 
 
 def avanzar(velocidad, tiempo):
@@ -91,6 +92,8 @@ def procesar_imagen_1era(message):
 
         rospy.loginfo('acomodar ' + str(grados) + ' grados')
         dir = 90 + grados
+        if dir > 100:
+            dir += 10
 
         girar(dir)
         avanzar(-150, 2)
