@@ -355,7 +355,7 @@ def lineLR_Nuevo(right_line,left_line,img_bco_negro):
 	kp= 0.2; #This is the proporational value
 	kd= 1; #This is the derivative value
 
-	giro = 1550
+	giro = 1650
 	if(right_line is not None):
 		#print("DERECHA")
 		#Vuelta a la Izquierda
@@ -391,22 +391,22 @@ def lineLR_Nuevo(right_line,left_line,img_bco_negro):
 			volante.publish(giro)
 			return str(giro)
 		if ( abs(PV) < 30.0):
-			giro=1300-int(abs(PV*2))
+			giro=1350-int(abs(PV*2))
 			#print("leve mas a la izq: ",giro)
 			volante.publish(giro)
 			return str(giro)
 		if ( abs(PV) < 45.0):
-			giro=1300-int(abs(PV*2.5))
+			giro=1400-int(abs(PV*2.5))
 			#print("giro a la izq: ",giro)
 			volante.publish(giro)
 			return str(giro)
 		if ( abs(PV) < 50.0):
-			giro=1300-int(abs(PV*3))
+			giro=1350-int(abs(PV*3))
 			#print("giro fuerte a la izq: ",giro)
 			volante.publish(giro)
 			return str(giro)
 		if ( abs(PV) > 50.0):
-			giro=1300-int(abs(PV*4))
+			giro=1350-int(abs(PV*4))
 			#print("giro fuerte a la izq: ",giro)
 			volante.publish(giro)
 			return str(giro)
