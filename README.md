@@ -1,3 +1,3 @@
 # TMR 2021 - AVIM
 
-Descompimir el zip y con las pruebas
+Descompimir el zip  con las pruebas
