@@ -60,12 +60,12 @@ class Master{
             dist_now = 0;
             angle_now = 0;
             angle_last = 0;
-            kp_angle = 0.825;
-            kd_angle = 0.0297;
+            kp_angle = 0.225;
+            kd_angle = 0.0081;
             error_angle = 0.0;
             u_angle = 0;
             speed_pid = 0;
-            kp_speed = 1.2645;
+            kp_speed = 0.0;
             u_speed = 0;
             this->add_task(task);
         }
@@ -116,9 +116,9 @@ class Master{
             else if(angle_pd >= 135)
 	            angle_pd = 135;
             u_speed = static_cast<int>(kp_speed * dist_now);
-            speed_pid = - 835 + abs(u_speed);
-            if(speed_pid < - 835)
-	            speed_pid = - 835;
+            speed_pid = -1235 + abs(u_speed);
+            if(speed_pid < - 1235)
+	            speed_pid = - 1235;
             else if(speed_pid > 0)
 	            speed_pid = 0;
             angle_last = angle_pd;
