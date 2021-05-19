@@ -1,0 +1,5 @@
+<launch>
+  <node name="lane_detection" pkg="lane_detection" type="lane_detection" output="screen"/>
+  <node name="object_detection_parking" pkg="object_detection_parking" type="object_detection_parking" output="screen"/>
+  <node name="Master_parking" pkg="control" type="Master_parking" output="screen"/>
+</launch>
