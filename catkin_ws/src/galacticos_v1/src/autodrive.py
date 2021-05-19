@@ -182,6 +182,8 @@ def procesar_imagen(message):
 
         if dir > 95:
             dir += 20
+        elif dir < 60:
+            dir -= 10
 
         girar(dir)
         avanzar(-125, 0.1)
