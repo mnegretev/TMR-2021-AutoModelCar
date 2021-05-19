@@ -45,6 +45,7 @@ def avanzar(velocidad, tiempo):
 def procesar_imagen_1era(message):
     global binary_image, suscriptor, cv_image
 
+    suscriptor.unregister()
     rospy.loginfo('1era')
     bridge_object = CvBridge()
 
@@ -63,7 +64,7 @@ def procesar_imagen_1era(message):
     except CvBridgeError as e:
         print(e)
 
-    suscriptor.unregister()
+
 
 
 def determina_puntos_medios():
