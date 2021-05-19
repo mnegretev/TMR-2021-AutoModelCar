@@ -321,10 +321,10 @@ class Master{
             else if(angle_pd >= 135)
 	            angle_pd = 135;
             u_speed = static_cast<int>(kp_speed * dist_now);
-            speed_pid = - 935 + abs(u_speed);
+            speed_pid = - 1035 + abs(u_speed);
             //speed_pid = -200;
-            if(speed_pid < - 935)
-	            speed_pid = - 935;
+            if(speed_pid < - 1035)
+	            speed_pid = - 1035;
             else if(speed_pid > 0)
 	            speed_pid = 0;
             angle_last = angle_pd;
