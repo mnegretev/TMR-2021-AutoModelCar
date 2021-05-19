@@ -12,7 +12,7 @@ def callback(data):
     res = 1450-res
     pil =((180.0/1100.0)*float(res))+90
     dire.publish(int(pil))
-    vez.publish(-350)
+    vez.publish(-600)
     #print(int(pil))
     
 def listener():
@@ -24,7 +24,7 @@ def listener():
     rospy.init_node('Convert', anonymous=True)
     rospy.Subscriber("Angulo", Int16, callback)
     rospy.spin()
-    vez.publish(-350)
+    vez.publish(-600)
 
 if __name__ == '__main__':
     listener()
