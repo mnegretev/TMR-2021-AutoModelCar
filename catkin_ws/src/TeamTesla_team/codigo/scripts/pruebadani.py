@@ -201,7 +201,7 @@ class LaneDetector:
         gir = (0.05274671*float(LineaL[0][0]))+(0.03002426*float(LineaL[0][1])) + (0.03745892*float(LineaL[1][0]))+(0.04439124* float(LineaR[0][0])) + (-0.68796478* float(LineaR[0][1]))+ (0.15142310*float(LineaR[1][0]))
         gir = (-(gir))+90
         dire.publish(gir)
-	vel.publish(-550)
+	vel.publish(-580)
         #f.write(str(pil)+","+str(LineaL)+str(LineaR)+"|"+"\n")
           
 ##        if right_line is not None & left_line is not None:
