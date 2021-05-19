@@ -9,4 +9,6 @@ Existe un nodo específico para cada una de las pruebas del TMR. Estos se ejecut
 3.- Navegación con obstáculos dinámicos: <br/>
 4.- Estacionamiento: $ rosrun dotMEX-CAR_team TMR_04_final.py <br/>
 
+
 Para instalar sklearn: $ pip install -U scikit-learn
+
