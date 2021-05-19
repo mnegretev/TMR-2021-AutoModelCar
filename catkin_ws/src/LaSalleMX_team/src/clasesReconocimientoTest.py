@@ -163,12 +163,12 @@ class streetDetection:
 				if centres[j][0] > bajo and centres[j][0] < alto:
 					contCentroides += 1
 			#Si se detecta 5 centroides o mas en el mismo intervalo entonces hay una interseccion en el mapa
-			if contCentroides >= 6:
+			if contCentroides >= 5:
 				print("Detectado interseccion")
 				areaBlanco=0
                     		for c in cntBlanco:
                         		areaBlanco = areaBlanco + cv2.contourArea(c)
-                                if areaBlanco > 20000:
+                                if areaBlanco > 18000:
                             		
                             	        return 1
                             	else: 
