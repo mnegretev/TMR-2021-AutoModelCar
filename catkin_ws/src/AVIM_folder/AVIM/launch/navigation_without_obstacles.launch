@@ -1,4 +1,0 @@
-<launch>
-  <node name="lane_detection" pkg="lane_detection" type="lane_detection" output="screen"/>
-  <node name="Master" pkg="control" type="Master" output="screen"/>
-</launch>
