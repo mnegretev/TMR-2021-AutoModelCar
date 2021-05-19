@@ -77,7 +77,7 @@ def procesar_imagen_1era(message):
         dir = 90 + grados
 
         girar(dir)
-        avanzar(-150, 2)
+        avanzar(-125, 2)
         avanzar(0, 1)
 
         rospy.Subscriber(
@@ -143,7 +143,7 @@ def procesar_imagen(message):
                 dir -= 10
 
         girar(dir)
-        avanzar(-125, 0.1)
+        avanzar(-100, 0.1)
 
     except CvBridgeError as e:
         print(e)
