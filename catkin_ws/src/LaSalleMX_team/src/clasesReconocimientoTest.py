@@ -107,7 +107,7 @@ class streetDetection:
 		area = cv2.contourArea(c)
 			#Se pregunta si el area es mayor a determinado numero, es decir que ocupa cierto espacio en la pantalla
         	print("Area:",area)
-		if area > 6000 and area <13000:
+		if area > 6000 and area <7000:
 	#Solo si la figura detectada tiene 8 vertices dispara la senialal de alto
 		    print("Reeeeturrrn")
             	    return 1
