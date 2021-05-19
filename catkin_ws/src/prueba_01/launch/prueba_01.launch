@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="prueba_01" type="drive.py" name="conduccion_sin_obstaculos" output="screen"></node>
+</launch>

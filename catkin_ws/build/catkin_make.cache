@@ -1,0 +1,2 @@
+Gazebo_plugin:autonomos_gazebo_simulation:bring_up:prueba_01
+-DCATKIN_DEVEL_PREFIX=/home/mario/simulador/TMR-2021-AutoModelCar/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/mario/simulador/TMR-2021-AutoModelCar/catkin_ws/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/mario/simulador/TMR-2021-AutoModelCar/catkin_ws/devel
+
+Name: prueba_01
+Description: Description of prueba_01
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

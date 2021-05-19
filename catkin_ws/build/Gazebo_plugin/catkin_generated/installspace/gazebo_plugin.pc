@@ -1,0 +1,8 @@
+prefix=/home/mario/simulador/TMR-2021-AutoModelCar/catkin_ws/install
+
+Name: gazebo_plugin
+Description: Description of gazebo_plugin
+Version: 0.1.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 
