@@ -1,0 +1,8 @@
+prefix=/home/jose/catkin_ws/devel
+
+Name: object_detection_parking
+Description: Description of object_detection_parking
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs roscpp std_msgs message_runtime

@@ -1,0 +1,8 @@
+prefix=/home/jose/catkin_ws/devel
+
+Name: AVIM
+Description: Description of AVIM
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

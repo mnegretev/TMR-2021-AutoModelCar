@@ -1,0 +1,8 @@
+prefix=/home/jose/catkin_ws/devel
+
+Name: gazebo_plugin
+Description: Description of gazebo_plugin
+Version: 0.1.0
+Cflags: -I/home/jose/catkin_ws/src/Gazebo_plugin/include
+Libs: -L${prefix}/lib 
+Requires: 
