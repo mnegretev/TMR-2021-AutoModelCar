@@ -15,6 +15,13 @@ ALTURA = 480 - MARGEN_ABAJO
 LINEA_Y = ALTURA - 30
 MARGEN_LINEA = 25
 
+# SPEED_TOPIC = '/AutoNOMOS_mini/manual_control/speed'
+# STEERING_TOPIC = '/AutoNOMOS_mini/manual_control/steering'
+
+CAM_TOPIC = '/app/camera/rgb/image_raw'
+SPEED_TOPIC = '/AutoModelMini/manual_control/speed'
+STEERING_TOPIC = '/AutoModelMini/manual_control/steering'
+
 lineas_y = (
     LINEA_Y - MARGEN_LINEA,
     LINEA_Y,
@@ -28,7 +35,7 @@ def girar(grados):
 
 def avanzar(velocidad, tiempo):
     vel_pub = rospy.Publisher(
-        '/AutoNOMOS_mini/manual_control/speed',
+        SPEED_TOPIC,
         Int16,
         queue_size=10
     )
@@ -56,15 +63,13 @@ def procesar_imagen_1era(message):
 
         determina_rectangulo()
         rospy.Subscriber(
-            '/app/camera/rgb/image_raw',
+            CAM_TOPIC,
             Image,
             procesar_imagen
         )
 
     except CvBridgeError as e:
         print(e)
-
-
 
 
 def determina_puntos_medios():
@@ -84,12 +89,10 @@ def determina_puntos_medios():
 
             else:
                 if inicio and fin:
-                # and fin-inicio < 10:
                     blancos.append((inicio + fin) // 2)
                     inicio = fin = None
 
         if inicio and fin:
-        # and fin-inicio < 10:
             blancos.append((inicio + fin) // 2)
             inicio = fin = None
 
@@ -184,18 +187,18 @@ if __name__ == '__main__':
         integral = 0
 
         gir_pub = rospy.Publisher(
-            '/AutoNOMOS_mini/manual_control/steering',
+            STEERING_TOPIC,
             Int16,
             queue_size=10
         )
 
         suscriptor = rospy.Subscriber(
-            '/app/camera/rgb/image_raw',
+            CAM_TOPIC,
             Image,
             procesar_imagen_1era
         )
 
-        rospy.loginfo('hola')
+        rospy.loginfo('inicio')
 
         try:
             rospy.spin()
