@@ -18,8 +18,6 @@ from sensor_msgs.msg import LaserScan
 
 from cv_bridge import CvBridge, CvBridgeError
 
-from neural_networks import *
-
 seven_sides = ["angle_1", "angle_2", "angle_3", "angle_4", "angle_5", "angle_6", "angle_7"]
 
 angles = {
@@ -42,10 +40,10 @@ class SimpleNeuralNetwork:
 		self.output_names  = []
 		for index in range(len(layers)):
 			self.output_names.append("CLASS " + str(index))
-	
+
 	def set_output_names(self, names):
 		self.output_names = names
-	
+
 	def normalize(self, value, limits=(-1, 1), target_limits=(0, 1)):
 		limits = (float(limits[0]), float(limits[1]))
 		target_limits = (float(target_limits[0]), float(target_limits[1]))
@@ -54,7 +52,6 @@ class SimpleNeuralNetwork:
 		size = limits[1] - limits[0]
 		proportion = value - limits[0]
 		other_size = target_limits[1] - target_limits[0]
-
 		new_proportion = (proportion * other_size) / size
 		return target_limits[0] + new_proportion
 
@@ -140,21 +137,21 @@ class input_printer:
     pass
   
   def normalize(self, start0, finish0, start1, finish1, value):
-	diference0 = finish0 - start0
-	diference1 = finish1 - start1
-	relationship = diference1 / diference0
-	fragment0 = value - start0
-	fragment1 = fragment0 * relationship
-	return(start1 + fragment1)
+    diference0 = finish0 - start0
+    diference1 = finish1 - start1
+    relationship = diference1 / diference0
+    fragment0 = value - start0
+    fragment1 = fragment0 * relationship
+    return(start1 + fragment1)
 
   def img_callback(self, data):
     try:
       cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
       angle = clasificar_imagen(cv_image, 7)
-      self.pub_steer.publish(angles[angle])
+      self.pub_steer.publish(angles[angle]*0.8)
       self.pub_speed.publish(-100)
     except:
-	  pass
+      pass
     
 def main(args):
   ip = input_printer()
@@ -167,8 +164,3 @@ def main(args):
 
 if __name__ == '__main__':
     main(sys.argv)
-    print(values)
-    with open('speed_and_steering.csv', 'w') as csvfile:
-      writer = csv.writer(csvfile, delimiter=',')
-      for row in values:
-        writer.writerow(row)
