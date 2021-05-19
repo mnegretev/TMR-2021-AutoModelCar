@@ -12,14 +12,19 @@ def callback(data):
     res = 1450-res
     pil =((180.0/1100.0)*float(res))+90
     dire.publish(int(pil))
+    vez.publish(-350)
     #print(int(pil))
     
 def listener():
     global dire
+    global vez
+
+    vez = rospy.Publisher('AutoModelMini/manual_control/speed',Int16, queue_size = 10)
     dire = rospy.Publisher('AutoModelMini/manual_control/steering',Int16, queue_size = 10)
     rospy.init_node('Convert', anonymous=True)
     rospy.Subscriber("Angulo", Int16, callback)
     rospy.spin()
+    vez.publish(-350)
 
 if __name__ == '__main__':
     listener()
