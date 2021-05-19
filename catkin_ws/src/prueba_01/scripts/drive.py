@@ -40,10 +40,10 @@ class SimpleNeuralNetwork:
 		self.output_names  = []
 		for index in range(len(layers)):
 			self.output_names.append("CLASS " + str(index))
-
+	
 	def set_output_names(self, names):
 		self.output_names = names
-
+	
 	def normalize(self, value, limits=(-1, 1), target_limits=(0, 1)):
 		limits = (float(limits[0]), float(limits[1]))
 		target_limits = (float(target_limits[0]), float(target_limits[1]))
@@ -52,6 +52,7 @@ class SimpleNeuralNetwork:
 		size = limits[1] - limits[0]
 		proportion = value - limits[0]
 		other_size = target_limits[1] - target_limits[0]
+
 		new_proportion = (proportion * other_size) / size
 		return target_limits[0] + new_proportion
 
@@ -124,43 +125,34 @@ RED_SIETE_LADOS.set_output_names(seven_sides)
 
 class input_printer:
   
-  def __init__(self):
-    self.img_counter = 0
-    self.bridge = CvBridge()
-    self.current_img_path = None
-    self.sub_img = rospy.Subscriber("/app/camera/rgb/image_raw", Image, self.img_callback)
-    self.pub_speed = rospy.Publisher('AutoModelMini/manual_control/speed', Int16, queue_size=10)
-    self.pub_steer = rospy.Publisher('AutoModelMini/manual_control/steering', Int16, queue_size=10)
-    pass
-   
-  def start(self):
-    pass
-  
-  def normalize(self, start0, finish0, start1, finish1, value):
-    diference0 = finish0 - start0
-    diference1 = finish1 - start1
-    relationship = diference1 / diference0
-    fragment0 = value - start0
-    fragment1 = fragment0 * relationship
-    return(start1 + fragment1)
+	def __init__(self):
+		self.img_counter = 0
+		self.bridge = CvBridge()
+		self.current_img_path = None
+		self.sub_img = rospy.Subscriber("/app/camera/rgb/image_raw", Image, self.img_callback)
+		self.pub_speed = rospy.Publisher('AutoModelMini/manual_control/speed', Int16, queue_size=10)
+		self.pub_steer = rospy.Publisher('AutoModelMini/manual_control/steering', Int16, queue_size=10)
 
-  def img_callback(self, data):
-    try:
-      cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
-      angle = clasificar_imagen(cv_image, 7)
-      self.pub_steer.publish(angles[angle]*0.8)
-      self.pub_speed.publish(-100)
-    except:
-      pass
+	def start(self):
+		pass
+
+	def img_callback(self, data):
+		try:
+			cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
+			angle = clasificar_imagen(cv_image, 7)
+			self.pub_steer.publish(angles[angle])
+			self.pub_speed.publish(-100)
+		except:
+			pass
     
 def main(args):
-  ip = input_printer()
-  rospy.init_node('input_printer', anonymous=True)
-  try:
-    rospy.spin()
-  except KeyboardInterrupt:
-    print("Shutting down")
-  cv2.destroyAllWindows()
+	ip = input_printer()
+	rospy.init_node('input_printer', anonymous=True)
+	try:
+		rospy.spin()
+	except KeyboardInterrupt:
+		print("Shutting down")
+	cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    main(sys.argv)
+	main(sys.argv)
