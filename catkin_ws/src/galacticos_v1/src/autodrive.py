@@ -15,12 +15,12 @@ ALTURA = 480 - MARGEN_ABAJO
 LINEA_Y = ALTURA - 30
 MARGEN_LINEA = 25
 
-SPEED_TOPIC = '/AutoNOMOS_mini/manual_control/speed'
-STEERING_TOPIC = '/AutoNOMOS_mini/manual_control/steering'
+# SPEED_TOPIC = '/AutoNOMOS_mini/manual_control/speed'
+# STEERING_TOPIC = '/AutoNOMOS_mini/manual_control/steering'
 
 CAM_TOPIC = '/app/camera/rgb/image_raw'
-# SPEED_TOPIC = '/AutoModelMini/manual_control/speed'
-# STEERING_TOPIC = '/AutoModelMini/manual_control/steering'
+SPEED_TOPIC = '/AutoModelMini/manual_control/speed'
+STEERING_TOPIC = '/AutoModelMini/manual_control/steering'
 
 LINEAS_Y = [
     LINEA_Y - MARGEN_LINEA,
@@ -50,9 +50,8 @@ def avanzar(velocidad, tiempo):
 
 
 def procesar_imagen_1era(message):
-    global binary_image, suscriptor, cv_image
+    global binary_image, cv_image
 
-    suscriptor.unregister()
     rospy.loginfo('1era')
     bridge_object = CvBridge()
 
@@ -61,7 +60,42 @@ def procesar_imagen_1era(message):
         gray_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
         _, binary_image = cv2.threshold(gray_image, 200, 255, cv2.THRESH_BINARY)
 
-        determina_rectangulo()
+        lineas_y = LINEAS_Y + [
+            LINEA_Y - (i * MARGEN_LINEA / 2)
+            for i in range(2, 8)
+        ]
+
+        pm = determina_puntos_medios(lineas_y, True)
+        for i in range(len(lineas_y)):
+            cv2.line(cv_image, (0, lineas_y[i]), (640, lineas_y[i]), (0, 255, 0), 1)
+            cv2.line(
+                cv_image,
+                (pm[i], lineas_y[i] - 3),
+                (pm[i], lineas_y[i] + 3),
+                (0, 150, 200),
+                1
+            )
+
+        cv2.imwrite('img.png', cv_image)
+        cv2.waitKey(3)
+
+        grados = None
+
+        for punto in pm:
+            if punto > 0:
+                grados = (320 - punto) / 2
+                break
+
+        if not grados:
+            raise Exception('no se encontro ningun punto medio')
+
+        rospy.loginfo('acomodar ' + str(grados) + ' grados')
+        dir = 90 + grados
+
+        girar(dir)
+        avanzar(-150, 2)
+        avanzar(0, 1)
+
         rospy.Subscriber(
             CAM_TOPIC,
             Image,
@@ -107,25 +141,8 @@ def determina_puntos_medios(lineas_y=LINEAS_Y, inverso=False):
     return puntos_medios
 
 
-def determina_rectangulo():
-    global binary_image, rectangulo
-    RECT_X = 1
-
-    lineas = LINEAS_Y + [LINEA_Y + 2 * MARGEN_LINEA]
-
-    puntos_medios = determina_puntos_medios(lineas, True)
-
-    for punto in puntos_medios:
-         if punto > 0:
-            rectangulo = (punto - RECT_X, punto + RECT_X)
-            rospy.loginfo(rectangulo)
-            return
-
-    raise Exception('No se encontro ningun punto medio')
-
-
 def procesar_imagen(message):
-    global binary_image, rectangulo, cv_image, recuerda_grados
+    global binary_image, cv_image, recuerda_grados
 
     bridge_object = CvBridge()
 
@@ -156,8 +173,8 @@ def procesar_imagen(message):
             (255, 0, 0), 1
         )
 
-        cv2.imshow('RGB image', cv_image)
         # cv2.imshow("binary image", binary_image)
+        cv2.imshow('RGB image', cv_image)
         cv2.waitKey(3)
 
         dir = determina_direccion()
@@ -169,7 +186,7 @@ def procesar_imagen(message):
 
 
 def determina_direccion():
-    global rectangulo
+    global grados_anteriores
 
     pm = determina_puntos_medios()
 
@@ -180,6 +197,7 @@ def determina_direccion():
             return grados
 
     rospy.loginfo('aaa')
+    return None
 
 
 if __name__ == '__main__':
@@ -188,23 +206,16 @@ if __name__ == '__main__':
 
         cv_image = None
         binary_image = None
-        rectangulo = None
-        primera_vez = True
-        grados_anteriores = 90
-        recuerda_grados = False
-        integral = 0
+        rectangulo = (319, 321)
 
         gir_pub = rospy.Publisher(
             STEERING_TOPIC,
             Int16,
             queue_size=10
         )
+        rospy.sleep(1)
 
-        suscriptor = rospy.Subscriber(
-            CAM_TOPIC,
-            Image,
-            procesar_imagen_1era
-        )
+        procesar_imagen_1era(rospy.wait_for_message(CAM_TOPIC, Image))
 
         rospy.loginfo('inicio')
 
