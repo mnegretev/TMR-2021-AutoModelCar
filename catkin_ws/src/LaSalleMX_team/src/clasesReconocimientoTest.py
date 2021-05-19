@@ -131,7 +131,7 @@ class streetDetection:
 
     def inicializamosCentro(self,cx,cy):
         if self.refx == 0 and self.refy == 0:
-		self.refx = cx
+		self.refx = cx-(cx/4)
 		self.refy = cy
 		#Se reescala el rango de valores de las coordenadas a estar entre -1 y 1
 		self.refNuevaY = np.interp(self.refy,[1, 480],[-1,1])
