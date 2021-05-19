@@ -180,6 +180,7 @@ def procesar_imagen(message):
 
         dir = determina_direccion()
 
+        if dir:
         if dir > 95:
             dir += 20
         elif dir < 60:
