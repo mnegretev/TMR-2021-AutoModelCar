@@ -87,14 +87,14 @@ def laser(data):
     if estado ==5:                          ###Mantener en el carril izquierdo
         #
         #print("Andamo en el estao 5")
-        sleep(0.3)
+        #sleep(0.3)
         automatico = True
         #dire.publish(0)
         #pub.publish(-350)
         #sleep(2)
         #print(data.ranges[270])
         if data.ranges[270] < 0.5:
-            sleep(.7)
+            sleep(.6)
             estado = 6
 
 
