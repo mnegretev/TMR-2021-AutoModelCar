@@ -182,19 +182,19 @@ def callback_V(data0):
 	y1 = 0
 	y2 = 0
 	if (Ev==False):
-		if (FT<=60):
+		if (FT<=90):
 			x1 = s
 			FT = FT+1
 			v = -500
 		else: 
 			x1 = x1_h
-			v = -800#-800
+			v = -700#-800
 		x1,y1,x2,y2 = line_detector(imagenF,x1,l,True)
 		x1_h = x1
 		x2_h = x2
 		kx = 0.14090953  
 		kth = 0.24827836 
-		kdth = 0.15 
+		kdth = 0.0#0.15 
 		ex = x1-x_ref
 		th = np.arctan2(x2-x1,l)
 		dth = (th-th_h)/h_vis
