@@ -64,10 +64,10 @@ def cambiospertinentes(desicionObject,vel):
         #AQUI METAN TODO LO DEL ESQUIVE 
         ##########################################################
         print("esquivando")
-        for i in range(200):
-            publisher(200,-120)
-        for i in range(200):
+            publisher(150,-120)
+            time.sleep(5)
             publisher(50,-120)
+            time.sleep(4)
             #print("alteramos")
         #for i in range(250):
            # publisher(-50,-120)
