@@ -37,20 +37,32 @@ def laser(data):
         if data.ranges[30] <2  or data.ranges[25] <2: 
             automatico = False
             estado=4
-
+        """if data.ranges[329] < 1.5 or data.ranges[327] <1.5:
+            automatico = False 
+            estado = 7
+"""
     if estado == 1:                         ###Cambiando de carril en Rectas
         #print("Andamo en el estao 1")
         dire.publish(110)
         pub.publish(-300)
         flag =False 
         #print(data.ranges[305])
-        if data.ranges[325] < 1 or data.ranges[327] < 1:
+        if data.ranges[350] < 0.4 or data.ranges[0]<0.4 or data.ranges[10]<0.4:
+            
+            pub.publish(0)
+            sleep(.5)
+            dire.publish(170)
+            pub.publish(-100)
+            
+        if data.ranges[325] < 1.5 or data.ranges[327] < 1.5:
             estado=2
+
 
 
     if estado ==2:                          ###Mantener en el carril izquierdo
         #
         flag =False 
+        pub.publish(-350)
         #print("Andamo en el estao 2")
         automatico = True
         #dire.publish(0)
@@ -117,7 +129,23 @@ def laser(data):
         sleep(1)
         estado = 0
         flag == False
+"""
+    if estado == 7:                     ###Cambiando de carril  en Cruce
+        print("Andamo en el estao 7")
+        
+        pub.publish(-350)
 
+        dire.publish(130)
+        #print(data.ranges[305])
+        if data.ranges[325] < 1.3 or data.ranges[327] < 1.3:
+            estado=8
+
+    if estado == 8:
+        pub.publish(-350)
+        dire.publish(90)
+        sleep(2)
+        estado = 6
+"""
 
 
 
@@ -134,4 +162,5 @@ def listener():
     rospy.spin()
 
 if __name__ == '__main__':
+    sleep(2.5)
     listener()
