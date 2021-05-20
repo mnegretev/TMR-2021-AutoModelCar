@@ -164,7 +164,7 @@ include_directories(
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 catkin_install_python(PROGRAMS
-   scripts/parking.py
+   scripts/parking.py scripts/H_rebase.py scripts/velocidad.py scripts/rebaseLalo.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 

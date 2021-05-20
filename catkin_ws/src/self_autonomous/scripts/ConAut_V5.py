@@ -355,7 +355,7 @@ def lineLR_Nuevo(right_line,left_line,img_bco_negro):
 	kp= 0.2; #This is the proporational value
 	kd= 1; #This is the derivative value
 
-	giro = 1550
+	giro = 1650
 	if(right_line is not None):
 		#print("DERECHA")
 		#Vuelta a la Izquierda

@@ -1,0 +1,4 @@
+<launch>
+<node pkg ="self_autonomous" type="velocidad.py" name= "Aungulo" output="screen"></node> 
+<node pkg ="self_autonomous" type="rebaseLalo.py" name= "parking" output="screen"></node> 
+</launch>
