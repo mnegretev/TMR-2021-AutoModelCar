@@ -1,5 +1,5 @@
 <launch>
   <node name="lane_detection" pkg="lane_detection" type="lane_detection" output="screen"/>
   <node name="object_detection" pkg="object_detection" type="object_detection" output="screen"/>
-  <node name="Master" pkg="control" type="Master" output="screen"/>
+  <node name="Master_static" pkg="control" type="Master_static" output="screen"/>
 </launch>

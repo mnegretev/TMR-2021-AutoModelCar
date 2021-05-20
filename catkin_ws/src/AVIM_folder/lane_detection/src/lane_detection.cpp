@@ -109,12 +109,10 @@ class LineDetection{
     	    ss.clear();
             ss << "[ANG]:" <<angle << " [FPS]:" << fps;
             putText(frame, ss.str(), Point2f(2,20), 0,1, Scalar(255, 0, 0), 2);
-	    /*
             resizeWindow(OPENCV_WINDOW,frame.cols, frame.rows);
             cv::imshow(OPENCV_WINDOW,frame);
-            cv::waitKey(10);
-            */
-	    center_message.data = distance_center;
+            cv::waitKey(15);
+            center_message.data = distance_center;
             center_pub.publish(center_message);
 	    	angle_line_message.data = angle;
 	    	angle_line_pub.publish(angle_line_message);

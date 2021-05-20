@@ -219,5 +219,5 @@ target_link_libraries(Master ${catkin_LIBRARIES})
 add_executable(Master_parking src/Master_parking.cpp)
 target_link_libraries(Master_parking ${catkin_LIBRARIES})
 
-add_executable(Master_empty src/Master_empty.cpp)
-target_link_libraries(Master_empty ${catkin_LIBRARIES})
+add_executable(Master_static src/Master_static.cpp)
+target_link_libraries(Master_static ${catkin_LIBRARIES})
