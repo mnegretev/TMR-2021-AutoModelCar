@@ -182,7 +182,7 @@ def callback_V(data0):
 	y1 = 0
 	y2 = 0
 	if (Ev==False):
-		if (FT<=120):
+		if (FT<=60):
 			x1 = s
 			FT = FT+1
 			v = -500
