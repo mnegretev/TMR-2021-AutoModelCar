@@ -252,22 +252,20 @@ def callback(data):
     medidac = data.ranges[20]
     #medidad = data.ranges[330]
     #medida =np.array(medida)
-    #medida = medida [medida<2.8]
-    ##promedio = sum(medida) / len(medida)
-    vel.publish(-256)   
+    vel.publish(-350)   
     dire.publish(gir)   
 
-    if medida < 2:
+    if medida < 1.18:
 
 
         dire.publish(173)
         time.sleep(1)
        
         dire.publish(90)
-        time.sleep(1.3)
+        time.sleep(0.62)
 
         dire.publish(10)
-        time.sleep(1)
+        time.sleep(0.59)
         
         ##dire.publish(75)
         ##time.sleep(0.1)
