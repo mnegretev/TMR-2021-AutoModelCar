@@ -257,7 +257,7 @@ def callback(data):
     vel.publish(-256)   
     dire.publish(gir)   
 
-    if medida < 1.18:
+    if medida < 2:
 
 
         dire.publish(173)
