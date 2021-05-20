@@ -257,8 +257,10 @@ class Master{
                 }
             }
             else if (current_task.ID ==  PASSING){
+                int angle_first;
+                angle_first = (count_pass == 1) ? 315.0 : 345.0;
                 for (auto obstacle : this->found_objects){
-                    if ((obstacle.y >= 270.0) && (obstacle.y <= 345.0)){
+                    if ((obstacle.y >= 270.0) && (obstacle.y <= angle_first)){
                         speed_pid = -300;
                         angle_pd = 20;
                         this->remove_task();
@@ -277,15 +279,15 @@ class Master{
                 }
             }
             else if (current_task.ID ==   MOVING_RIGHT){
-                time_long = 2750;
+                time_long = 2250;
                 if (count_pass == 4) {
-                    time_long = 4000;
+                    time_long = 3500;
                 }
                 else if(count_pass == 2){
                     time_long = 1700;
                 }
                 else if(count_pass == 3){
-                    time_long = 2000;
+                    time_long = 1850;
                 }
                 end =  std::chrono::steady_clock::now();
                     if ( (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > time_long ) ){
@@ -306,17 +308,14 @@ class Master{
                 }
                 */
                  end =  std::chrono::steady_clock::now();
-                 for (auto obstacle : this->found_objects){
-                    if ((((obstacle.y >= 240.0 && obstacle.y <= 300.0) && obstacle.x >= 100.0) && abs(dist_now) <= 20)||std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() >  12500){
+                    if (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() >  7500){
                         on_lane_right(); 
                         this->remove_task();
                         mid_speed = 1035;
-                        break;
                     }
                     else{
                         on_lane_right();
                     }
-                 }
             }
             last_task =  new Task(current_task.ID);
         }
@@ -351,7 +350,7 @@ class Master{
             else if(angle_pd >= 180)
 	            angle_pd = 180;
             u_speed = static_cast<int>(kp_speed * dist_now);
-	        speed_pid = -150;
+            speed_pid = (count_pass == 1) ? -200 : -150;
             angle_last = angle_pd;
         }
 
