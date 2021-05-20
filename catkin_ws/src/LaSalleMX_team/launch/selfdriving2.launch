@@ -1,0 +1,10 @@
+<launch>
+
+<node pkg="team_lasalle" type="reconocimientoCarretera2.py" name="reconcarretera" output="screen">
+</node>
+
+<node pkg="team_lasalle" type="movimientoCarro2.py" name="movimientovehiculo" output="screen">
+</node>
+
+
+</launch>

@@ -1,0 +1,6 @@
+s<launch>
+
+<node pkg="team_lasalle" type="controlTecladoDeb.py" name="controldeb" output="screen">
+</node>
+
+</launch>
