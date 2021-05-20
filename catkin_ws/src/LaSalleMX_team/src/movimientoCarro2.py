@@ -61,7 +61,7 @@ def cambiospertinentes(desicionObject,vel):
         esquive()
 
         ##########################################################
-        #AQUI METAN TODO LO DEL ESQUIVE GUEYES
+        #AQUI METAN TODO LO DEL ESQUIVE
         ##########################################################
         print("esquivando")
         for i in range(200):
