@@ -8,6 +8,7 @@ from sensor_msgs.msg import LaserScan
 from time import sleep
 automatico = True
 estado= 0
+
 def callback(data):
     global pil
     #Aquie va lo de los angulos y pa publicacion
@@ -21,6 +22,7 @@ def callback(data):
     #print(int(pil))
     
 def laser(data):
+    
     global estado
     global automatico
     flag = False
@@ -115,6 +117,8 @@ def laser(data):
         sleep(1)
         estado = 0
         flag == False
+
+
 
 
 
