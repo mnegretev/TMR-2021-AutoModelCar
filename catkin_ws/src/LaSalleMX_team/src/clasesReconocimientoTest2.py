@@ -27,8 +27,8 @@ class streetDetection:
 	self.refy = 0
 	self.refNuevaX = 0
 	self.refNuevaY = 0
-    	self.azulBajo = np.array([105, 100, 20])
-	self.azulAlto = np.array([125, 255, 255])
+    	self.azulBajo = np.array([95, 100, 20])
+	self.azulAlto = np.array([145, 255, 255])
 
     #De aqui en adelante todos los metodos giran en torno a procesar la imagen para reconocer la calle
     def calculaCentroide(self,m):
