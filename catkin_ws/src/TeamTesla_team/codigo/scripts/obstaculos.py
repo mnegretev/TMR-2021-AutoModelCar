@@ -250,9 +250,13 @@ def callback(data):
     medida = data.ranges[359]
 
     medidac = data.ranges[20]
-    #medidad = data.ranges[330]
-    #medida =np.array(medida)
-    vel.publish(-350)   
+    print('lidar r', medida)
+    print('lidar c', medidac)
+    #print('lidar d', medidad)
+
+
+    
+    vel.publish(-290)   
     dire.publish(gir)   
 
     if medida < 1.18:
