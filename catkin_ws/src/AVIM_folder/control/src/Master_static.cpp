@@ -279,13 +279,13 @@ class Master{
             else if (current_task.ID ==   MOVING_RIGHT){
                 time_long = 2750;
                 if (count_pass == 4) {
-                    time_long = 4000;
+                    time_long = 3500;
                 }
                 else if(count_pass == 2){
                     time_long = 1700;
                 }
                 else if(count_pass == 3){
-                    time_long = 2000;
+                    time_long = 1850;
                 }
                 end =  std::chrono::steady_clock::now();
                     if ( (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > time_long ) ){
