@@ -12,6 +12,6 @@
   
   <node name="random_obstacles" pkg="bring_up" type="test3_start.py"/>
 
-  <node name="tmr_03" pkg="dotMEX-CAR_team" type="TMR_03_final.py" output="screen"/>
+  <!--node name="tmr_03" pkg="dotMEX-CAR_team" type="TMR_03_final.py" output="screen"/-->
 
 </launch>

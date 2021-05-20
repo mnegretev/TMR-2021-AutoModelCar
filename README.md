@@ -6,7 +6,7 @@ Existe un nodo específico para cada una de las pruebas del TMR. Estos se ejecut
 
 1.- Navegación sin obstáculos: $ rosrun dotMEX-CAR_team TMR_01_final.py <br/>
 2.- Navegación con obstáculos estáticos: $ rosrun dotMEX-CAR_team TMR_02_final.py <br/>
-3.- Navegación con obstáculos dinámicos: $ roslaunch bring_up navigation_with_dynamic_obstacles.launch <br/>
+3.- Navegación con obstáculos dinámicos: $ rosrun dotMEX-CAR_team TMR_03_final.py <br/>
 4.- Estacionamiento: $ rosrun dotMEX-CAR_team TMR_04_final.py <br/>
 
 
