@@ -188,7 +188,7 @@ def callback_V(data0):
 			v = -500
 		else: 
 			x1 = x1_h
-			v = -900#-800
+			v = -800#-800
 		x1,y1,x2,y2 = line_detector(imagenF,x1,l,True)
 		x1_h = x1
 		x2_h = x2
