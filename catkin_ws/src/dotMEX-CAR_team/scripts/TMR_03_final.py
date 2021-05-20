@@ -38,7 +38,7 @@ u = 90
 v = 0
 th_h = 0.0
 h_vis = 1.0/30.0
-time.sleep(3)
+time.sleep(2)
 
 def tip(imagenN):
 	H=np.array([[-7.98362236e-02,-4.79765416e-01,1.23982766e+02],[1.05493081e-03,-1.61957424,3.77026220e+02],[7.48177877e-06,-4.86995945e-03,1.0]]) 
@@ -125,7 +125,7 @@ def callback_L(data1):
 		R0_i = R[0:19] 			
 		R0_d = R[339:359] 	
 		curl = False
-	if (abs(th*(180.0/np.pi))>15) or (cont_obs==1):
+	if (abs(th*(180.0/np.pi))>15):# or (cont_obs==1):
 		D = 65.0
 		d = 60.0
 		R0_i = R[0:44]	
@@ -155,7 +155,7 @@ def callback_L(data1):
 				FT = 0
 				FTY = True
 				s = 160
-				cont_obs = cont_obs+1
+				#cont_obs = cont_obs+1
 				step = 0
 			if (r_min>=0.4) and (r270>=0.5) and (curl==True): step = step+1
 		if (step == 3):
@@ -168,7 +168,7 @@ def callback_L(data1):
 				FT = 0
 				FTY = True
 				s = 140
-				cont_obs = cont_obs +1
+				#cont_obs = cont_obs +1
 				step = 0
 		print('step ',step)
 		print('Dyaw ',Dyaw)
