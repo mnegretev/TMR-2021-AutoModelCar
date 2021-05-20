@@ -254,16 +254,10 @@ def callback(data):
     #medida =np.array(medida)
     #medida = medida [medida<2.8]
     ##promedio = sum(medida) / len(medida)
-    print('lidar r', medida)
-   # print('lidar c', medidac)
-    #print('lidar d', medidad)
-
-
-    
-    vel.publish(-250)   
+    vel.publish(-256)   
     dire.publish(gir)   
 
-    if medida < 2:
+    if medida < 1.18:
 
 
         dire.publish(173)
@@ -288,6 +282,7 @@ def callback(data):
     
         dire.publish(10)
         time.sleep(1.5)
+
    # if medidad < 2:
     #    dire.publish(90)
      #   vel.publish(-600)
