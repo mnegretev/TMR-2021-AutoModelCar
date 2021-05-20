@@ -200,6 +200,7 @@ def callback_V(data0):
 		dth = (th-th_h)/h_vis
 		th_h = th
 		u = int(round(90-np.arctan(kx*ex+kth*th+kdth*dth)*(180/np.pi)))
+		print('Dyaw ',Dyaw)
 		print('th ',th*(180.0/np.pi))
 		print('steering',u)
 		print('******************')
