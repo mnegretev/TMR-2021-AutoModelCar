@@ -311,7 +311,7 @@ class Master{
                     if (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() >  12500){//7500
                         on_lane_right(); 
                         this->remove_task();
-                        mid_speed = 1035;
+                        mid_speed = 1035;//
                     }
                     else{
                         on_lane_right();
