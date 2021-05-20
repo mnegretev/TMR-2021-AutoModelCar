@@ -65,8 +65,9 @@ def cambiospertinentes(desicionObject,vel):
         ##########################################################
         print("esquivando")
         for i in range(200):
-            publisher(390,-120)
-            time.sleep(2)
+            publisher(200,-120)
+        for i in range(200):
+            publisher(50,-120)
             #print("alteramos")
         #for i in range(250):
            # publisher(-50,-120)
