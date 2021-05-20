@@ -1,5 +1,4 @@
 #! /usr/bin/env python
-import time
 import cv2
 import rospy
 import numpy as np
@@ -23,7 +22,6 @@ Ev = False
 Obs1 = False
 step = 0
 curl = False
-cont_obs = 0
 f_imu = 50.0
 h = 1.0/f_imu
 yaw = 0.0
@@ -38,7 +36,6 @@ u = 90
 v = 0
 th_h = 0.0
 h_vis = 1.0/30.0
-time.sleep(5)
 
 def tip(imagenN):
 	H=np.array([[-7.98362236e-02,-4.79765416e-01,1.23982766e+02],[1.05493081e-03,-1.61957424,3.77026220e+02],[7.48177877e-06,-4.86995945e-03,1.0]]) 
@@ -108,7 +105,7 @@ def callback_imu(data2):
 
 def callback_L(data1):
 	global Ev,Obs1, step
-	global FT, FTY, D, curl, s, cont_obs
+	global FT, FTY, D, curl, s
 	global u,v
 	R_full = data1.ranges
 	k = 0
@@ -118,14 +115,14 @@ def callback_L(data1):
 		R.append(r)
 		k = k+1
 	r_min = np.amin(R) 
-	r270 = R[259] #269
+	r270 = R[269]
 	if (abs(th*(180.0/np.pi))<=15):	
-		D = 29.0#28.0
+		D = 28.0
 		d = 0.0
 		R0_i = R[0:19] 			
 		R0_d = R[339:359] 	
 		curl = False
-	if (abs(th*(180.0/np.pi))>15):# or (cont_obs==1):
+	else:
 		D = 65.0
 		d = 60.0
 		R0_i = R[0:44]	
@@ -150,14 +147,13 @@ def callback_L(data1):
 			if (Dyaw>=-d): step = step+1
 		if (step == 2):
 			u = 90+ky*Dyaw
-			if (r_min>=0.45) and (r270>=0.5) and (curl==False):
+			if (r_min>=0.4) and (r270>=0.5) and (curl==False):
 				Ev = False
 				FT = 0
 				FTY = True
 				s = 160
-				#cont_obs = cont_obs+1
 				step = 0
-			if (r_min>=0.4) and (r270>=0.5) and (curl==True): step = step+1
+			if (r_min>=0.3) and (r270>=0.5) and (curl==True): step = step+1
 		if (step == 3):
 			u = 0
 			if (Dyaw>=-40): step = step+1
@@ -168,7 +164,6 @@ def callback_L(data1):
 				FT = 0
 				FTY = True
 				s = 140
-				#cont_obs = cont_obs +1
 				step = 0
 		print('step ',step)
 		print('Dyaw ',Dyaw)
@@ -187,7 +182,7 @@ def callback_V(data0):
 	y1 = 0
 	y2 = 0
 	if (Ev==False):
-		if (FT<=60):
+		if (FT<=90):
 			x1 = s
 			FT = FT+1
 			v = -500

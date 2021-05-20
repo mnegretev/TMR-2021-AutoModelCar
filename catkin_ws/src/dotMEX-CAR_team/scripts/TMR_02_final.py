@@ -147,7 +147,7 @@ def callback_L(data1):
 			if (Dyaw>=-d): step = step+1
 		if (step == 2):
 			u = 90+ky*Dyaw
-			if (r_min>=0.3) and (r270>=0.5) and (curl==False):
+			if (r_min>=0.4) and (r270>=0.5) and (curl==False):
 				Ev = False
 				FT = 0
 				FTY = True
