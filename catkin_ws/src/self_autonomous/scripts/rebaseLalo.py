@@ -93,7 +93,7 @@ def laser(data):
         #pub.publish(-350)
         #sleep(2)
         #print(data.ranges[270])
-        if data.ranges[270] < 0.5:
+        if data.ranges[270] < 0.9:
             sleep(.6)
             estado = 6
 

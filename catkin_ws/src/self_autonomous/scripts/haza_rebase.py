@@ -28,10 +28,10 @@ def laser(data):
     global automatico
     global vel
 
-    if vel==0:
-        pub.publish(-350)
-    else:
-        pub.publish(0)
+    #if vel==0:
+    pub.publish(-350)
+    #else:
+    #pub.publish(0)
 
     rango_frontal=np.concatenate((data.ranges[345:360], data.ranges[0:16]))
     datos_frontal=np.array(rango_frontal)
