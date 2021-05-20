@@ -112,7 +112,7 @@ def laser(data):
             #pub.publish(-350)
         #else:
         dire.publish(10)
-        sleep(1.5)
+        sleep(1)
         estado = 0
         flag == False
 
