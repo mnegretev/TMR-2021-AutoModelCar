@@ -1,4 +1,5 @@
 <launch>
+  <arg name="node_start_delay" default="2.0" />  
   <env name="GAZEBO_MODEL_PATH" value="$(find autonomos_gazebo_simulation)/models:$(optenv GAZEBO_MODEL_PATH)"/>
   <env name="GAZEBO_RESOURCE_PATH" value="$(find autonomos_gazebo_simulation)/worlds:$(optenv GAZEBO_RESOURCE_PATH)"/>
 
@@ -12,6 +13,6 @@
   
   <node name="random_obstacles" pkg="bring_up" type="test3_start.py"/>
 
-  <node name="tmr_03" pkg="dotMEX-CAR_team" type="TMR_03_final.py" output="screen"/>
+  <node name="tmr_03" pkg="dotMEX-CAR_team" type="TMR_03_final.py" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' "/>
 
 </launch>
