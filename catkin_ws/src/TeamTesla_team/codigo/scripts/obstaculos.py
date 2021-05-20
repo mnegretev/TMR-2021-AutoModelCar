@@ -267,7 +267,7 @@ def callback(data):
         time.sleep(0.62)
 
         dire.publish(10)
-        time.sleep(0.59)
+        time.sleep(1)
         
         ##dire.publish(75)
         ##time.sleep(0.1)
