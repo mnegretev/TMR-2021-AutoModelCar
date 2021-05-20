@@ -287,7 +287,7 @@ class Master{
                     time_long = 1700;
                 }
                 else if(count_pass == 3){
-                    time_long = 1850;
+                    time_long = 1750;//1850
                 }
                 end =  std::chrono::steady_clock::now();
                     if ( (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > time_long ) ){
