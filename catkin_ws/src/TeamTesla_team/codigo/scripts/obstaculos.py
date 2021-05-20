@@ -247,7 +247,7 @@ def callback(data):
     
     global medida
 
-    medida = data.ranges[359]
+    medida = data.ranges[0]
 
     medidac = data.ranges[20]
     print('lidar r', medida)
