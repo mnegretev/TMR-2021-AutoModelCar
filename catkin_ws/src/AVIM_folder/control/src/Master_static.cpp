@@ -306,17 +306,14 @@ class Master{
                 }
                 */
                  end =  std::chrono::steady_clock::now();
-                 for (auto obstacle : this->found_objects){
-                    if ((((obstacle.y >= 240.0 && obstacle.y <= 300.0) && obstacle.x >= 100.0) && abs(dist_now) <= 20)||std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() >  12500){
+                    if (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() >  12500){
                         on_lane_right(); 
                         this->remove_task();
                         mid_speed = 1035;
-                        break;
                     }
                     else{
                         on_lane_right();
                     }
-                 }
             }
             last_task =  new Task(current_task.ID);
         }
