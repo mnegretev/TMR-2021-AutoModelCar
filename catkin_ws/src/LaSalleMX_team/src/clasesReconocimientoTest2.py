@@ -103,7 +103,7 @@ class streetDetection:
 			areaAzul = cv2.contourArea(c)
 			print("Area azull: {}".format(areaAzul))
 			if areaAzul > 10000:
-				return 1
+				return 0
         return 0        
 
     def detectorAltos(self,cntRojo):
