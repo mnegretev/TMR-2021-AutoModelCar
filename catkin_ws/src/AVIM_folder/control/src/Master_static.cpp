@@ -277,7 +277,7 @@ class Master{
                 }
             }
             else if (current_task.ID ==   MOVING_RIGHT){
-                time_long = 2750;
+                time_long = 2500;
                 if (count_pass == 4) {
                     time_long = 3500;
                 }
@@ -306,7 +306,7 @@ class Master{
                 }
                 */
                  end =  std::chrono::steady_clock::now();
-                    if (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() >  12500){
+                    if (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() >  5500){
                         on_lane_right(); 
                         this->remove_task();
                         mid_speed = 1035;
