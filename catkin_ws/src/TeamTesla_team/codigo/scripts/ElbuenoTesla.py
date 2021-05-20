@@ -249,7 +249,7 @@ def callback(data):
 
     medida = data.ranges[0]
 
-    medidac = data.ranges[20]
+    medidac = data.ranges[30]
 
     print('lidar r', medida)
     print('lidar c', medidac)
