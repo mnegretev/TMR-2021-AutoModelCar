@@ -247,7 +247,7 @@ def callback(data):
     
     global medida
 
-    medida = data.ranges[0]
+    medida = data.ranges[359]
 
     medidac = data.ranges[20]
     #medidad = data.ranges[330]
@@ -263,7 +263,7 @@ def callback(data):
     vel.publish(-250)   
     dire.publish(gir)   
 
-    if medida < 1.18:
+    if medida < 2:
 
 
         dire.publish(173)
