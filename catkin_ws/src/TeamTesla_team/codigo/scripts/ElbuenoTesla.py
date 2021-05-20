@@ -279,9 +279,9 @@ def callback(data):
     if (medidac <= 0.999 and medidac >= 0.97):
 
         vel.publish(100)
-        time.sleep(2)
+        time.sleep(2.3)
         dire.publish(179)
-        vel.publish(-200)   
+        vel.publish(-100)   
         time.sleep(3.5)
         dire.publish(90)
         time.sleep(3)
