@@ -1,0 +1,3 @@
+<launch>
+	<node pkg="prueba_02" type="joy_input.py" name="conduccion_con_obstaculos" output="screen"></node>
+</launch>
