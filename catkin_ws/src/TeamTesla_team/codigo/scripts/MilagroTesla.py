@@ -260,7 +260,7 @@ def callback(data):
     vel.publish(-250)   
     dire.publish(gir)   
 
-    if (medida < 0.9 and medida > 0.88):
+    if (medida < 0.9 and medidac > 0.88):
 
      ##   vel.publish(-220)
         dire.publish(179)
