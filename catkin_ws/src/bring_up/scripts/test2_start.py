@@ -17,18 +17,6 @@ def main():
     spawn_model = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
     spawn_req   = SpawnModelRequest()
     
-    angle = numpy.random.uniform(math.pi-0.3, math.pi+0.3)
-    pos_x = numpy.random.uniform(-3.8,-1.2) 
-    spawn_req.model_name = "AutoModel_Obstacle1"
-    spawn_req.model_xml  = open(pkg_path + '/models/AutoNOMOS_mini_static/model.sdf','r').read()
-    spawn_req.robot_namespace = ''
-    spawn_req.initial_pose.position.x = pos_x
-    spawn_req.initial_pose.position.y = 3.3
-    spawn_req.initial_pose.position.z = 0.17
-    spawn_req.initial_pose.orientation.z = math.sin(angle/2)
-    spawn_req.initial_pose.orientation.w = math.cos(angle/2)
-    spawn_model(spawn_req)
-
     angle = numpy.random.uniform(-math.pi/2.0-0.2, -math.pi/2.0+0.2)
     pos_y = numpy.random.uniform(-1,1) 
     spawn_req.model_name = "AutoModel_Obstacle2"
