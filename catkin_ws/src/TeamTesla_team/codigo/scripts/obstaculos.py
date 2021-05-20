@@ -255,7 +255,7 @@ def callback(data):
     #medida = medida [medida<2.8]
     ##promedio = sum(medida) / len(medida)
     print('lidar r', medida)
-    print('lidar c', medidac)
+   # print('lidar c', medidac)
     #print('lidar d', medidad)
 
 
