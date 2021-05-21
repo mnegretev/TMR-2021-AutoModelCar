@@ -31,3 +31,8 @@ Version esquiva obstaculos requiere de :
 
         roslaunch team_lasalle selfdriving2.launch
 ****
+
+Version esquiva obstaculos requiere de :
+
+        roslaunch team_lasalle selfparking.launch
+****
