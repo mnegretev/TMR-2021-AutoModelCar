@@ -1,4 +1,4 @@
-s<launch>
+<launch>
 
 <node pkg="team_lasalle" type="controlTecladoDeb.py" name="controldeb" output="screen">
 </node>

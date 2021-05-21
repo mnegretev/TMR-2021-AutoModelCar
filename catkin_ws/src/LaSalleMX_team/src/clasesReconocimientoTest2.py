@@ -27,8 +27,8 @@ class streetDetection:
 	self.refy = 0
 	self.refNuevaX = 0
 	self.refNuevaY = 0
-    	self.azulBajo = np.array([105, 100, 20])
-	self.azulAlto = np.array([125, 255, 255])
+    	self.azulBajo = np.array([95, 100, 20])
+	self.azulAlto = np.array([145, 255, 255])
 
     #De aqui en adelante todos los metodos giran en torno a procesar la imagen para reconocer la calle
     def calculaCentroide(self,m):
@@ -102,7 +102,7 @@ class streetDetection:
         for c in cntAzul:
 			areaAzul = cv2.contourArea(c)
 			print("Area azull: {}".format(areaAzul))
-			if areaAzul > 10000:
+			if areaAzul > 4000:
 				return 1
         return 0        
 
@@ -121,7 +121,7 @@ class streetDetection:
 		if area > 6000 and area <13000:
 	#Solo si la figura detectada tiene 8 vertices dispara la senialal de alto
 		    print("Reeeeturrrn")
-            	    return 1
+            	    return 0
 	return 0
 
 #Usamos esta funcion principalmente para debugging de las conecciones entre ros y opencv

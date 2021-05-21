@@ -20,7 +20,7 @@ def cambiospertinentes(desicionObject,vel):
     global switch
     if desicion == 's':
         if vel>0 or vel==0:
-            vel=vel+30
+            vel=vel+60
             print("Velocidad aumentada",vel)
         if vel<0:
             vel=0
@@ -31,7 +31,7 @@ def cambiospertinentes(desicionObject,vel):
             vel=0
             print("STAAAAAAAAAAAAAAAAP")
         if vel<0 or vel==0:
-            vel=vel-30
+            vel=vel-60
             print("Reversa aumentada",vel)
     #Relacionado con giro a la izquierdo
     if desicion == "a":
@@ -58,17 +58,19 @@ def cambiospertinentes(desicionObject,vel):
         time.sleep(0.25)
 
     if desicion== "esquiva":
-        esquive()
+        #esquive()
 
         ##########################################################
-        #AQUI METAN TODO LO DEL ESQUIVE GUEYES
+        #AQUI METAN TODO LO DEL ESQUIVE 
         ##########################################################
         print("esquivando")
-        for i in range(200):
-            publisher(390,-120)
-            print("alteramos")
-        for i in range(250):
-            publisher(-50,-120)
+        publisher(150,-120)
+        time.sleep(5)
+        publisher(50,-120)
+        time.sleep(4)
+            #print("alteramos")
+        #for i in range(250):
+           # publisher(-50,-120)
         #switch=1
         
         
@@ -121,3 +123,4 @@ if __name__ == "__main__":
         rospy.spin()
     except KeyboardInterrupt:
         print("Shutting down")
+        #Velociad
