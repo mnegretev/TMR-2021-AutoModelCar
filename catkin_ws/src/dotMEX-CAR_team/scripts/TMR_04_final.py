@@ -120,7 +120,7 @@ def callback_R(data0):
 	if (step == 2):
 		u = 180
 		v = 250
-		if (Dyaw>=0.0) or (r180<=0.45): #0.42
+		if (Dyaw>=0.0) or (r180<=0.45): #0.42 #
 			step = step + 1
 	if (step == 3):
 		if (Dyaw<-1): u = 0
