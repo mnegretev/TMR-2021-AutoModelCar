@@ -251,12 +251,14 @@ class ObjectDetection
                 cv::Point2f(*i, scan->ranges[*i]));
            }
         }
-        image = cv::Mat::zeros( 800, 800, CV_8UC3 );
+        //image = cv::Mat::zeros( 800, 800, CV_8UC3 );
         get_object_points(scan_points);
+        /*
         circle(image, cv::Point( 400, 400 ), 50.0, cv::Scalar( 255, 0, 0), 2);
         circle(image, cv::Point(400 , 400),cvRound((double)4/ 2), cv::Scalar(0, 255, 0),2);
         line(image, cv::Point(400,0), cv::Point(400,800), cv::Scalar(255, 0, 0), 2); 
         line(image, cv::Point(0,400), cv::Point(800,400), cv::Scalar(255, 0, 0), 2); 
+        */
         //std::cout << "Number clusters " << clusters_points.size() << std::endl;
         
 
