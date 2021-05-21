@@ -27,9 +27,9 @@ def callback(data):
 
     #Aquie va lo de los angulos y pa publicacion
     #print(data.data)
-    res = data.data
-    res = 1450-res
-    pil =((180.0/1100.0)*float(res))+90
+    pil = data.data
+    #res = 1450-res
+    #pil =((180.0/1100.0)*float(res))+90
     if automatico == True:
 
         dire.publish(int(pil))
@@ -100,12 +100,6 @@ def laser(data):
             pub.publish(0)
             dire.publish(90)
             caso=5
-
-
-
-
-
-                
 
 
 
