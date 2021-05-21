@@ -16,6 +16,7 @@ int STOP = 2;
 int MOVING_LEFT = 3;
 int STOP_MOVING_RIGHT = 4;
 int MOVING_RIGHT = 5;
+int MOVING_BACK = 6;
 
 static std::map<int, std::string>task_names{
      { LANE_DRIVING,"Lane driving"},
@@ -23,7 +24,8 @@ static std::map<int, std::string>task_names{
      { STOP,"Stop moving"},
      { MOVING_LEFT, "Moving to left lane"},
      { STOP_MOVING_RIGHT, " Moving aling"},
-     { MOVING_RIGHT , "Returning right "}
+     { MOVING_RIGHT , "Returning right "},
+     { MOVING_BACK , "Back"}
 };
 
 
@@ -135,6 +137,7 @@ class Master{
                        if (current_task.ID == LANE_DRIVING){
                             // Adds following routine
                             this->add_task(Task(STOP));
+                            this->add_task(Task(MOVING_BACK));
                             this->add_task(Task(STOP_MOVING_RIGHT));
                             this->add_task(Task(MOVING_RIGHT));
                             this->add_task(Task(MOVING_LEFT));
@@ -161,7 +164,7 @@ class Master{
                 }
                 else{
                     for (auto obstacle : this->found_objects){
-                        if( (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > 4750) && (obstacle.y == 0.0 || (obstacle.y <= 360.0 && obstacle.y >= 300.0))){
+                        if( (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > 3750) && (obstacle.y == 0.0 || (obstacle.y <= 360.0 && obstacle.y >= 300.0))){
                             stop_car();
                             this->remove_task();
                             break;
@@ -205,6 +208,17 @@ class Master{
                 speed_pid = -100;
                 angle_pd = 0;
                 if(std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > 1850){
+                    speed_pid = 0;
+                    angle_pd = 90;
+                    this->remove_task();
+                    start =  std::chrono::steady_clock::now();
+                }
+            }
+            else if(current_task.ID == MOVING_BACK){
+                end =  std::chrono::steady_clock::now();
+                speed_pid = 150;
+                angle_pd = 0;
+                if(std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > 750){
                     speed_pid = 0;
                     angle_pd = 90;
                     this->remove_task();

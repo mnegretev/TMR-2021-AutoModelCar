@@ -198,7 +198,7 @@ class ObjectDetection
 
         //Destructor
         ~ObjectDetection(){
-          	cv::destroyWindow(OPENCV_WINDOW);
+          	//cv::destroyWindow(OPENCV_WINDOW);
         }
     void laser_msg_Callback( const sensor_msgs::LaserScan::ConstPtr& scan){
         // Local variables
@@ -274,11 +274,12 @@ class ObjectDetection
             }
             pub.publish(points_msg);
         }
-        
+        /*
         resize_image(image);
         cv::resizeWindow(OPENCV_WINDOW, image.cols, image.rows);
         imshow(OPENCV_WINDOW,image);
         cv::waitKey(15);
+        */
     }
 
     void get_object_points(const vector_point& scan_points){
