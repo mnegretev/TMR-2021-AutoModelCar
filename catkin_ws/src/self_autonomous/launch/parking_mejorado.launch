@@ -1,0 +1,4 @@
+<launch>
+<node pkg ="self_autonomous" type="ConAut_V5.py" name= "Aungulo" output="screen"></node> 
+<node pkg ="self_autonomous" type="H_parking.py" name= "parking" output="screen"></node> 
+</launch>

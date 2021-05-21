@@ -160,7 +160,7 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
  catkin_install_python(PROGRAMS
-   scripts/ConAut_V5.py scripts/pubAng.py scripts/parking.py
+   scripts/ConAut_V5.py scripts/pubAng.py scripts/parking.py scripts/H_parking.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 catkin_install_python(PROGRAMS
