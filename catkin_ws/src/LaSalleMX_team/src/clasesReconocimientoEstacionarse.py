@@ -271,14 +271,14 @@ class streetDetection:
             self.publisher2(giro,vel)
             print("cicloterminado","Vel:",vel,"Giro",giro,"Contador",cont)
             cont=cont+1
-            time.sleep(12)
+            time.sleep(10)
         if cont==3:
             vel=300
             giro=-30
             self.publisher2(giro,vel)
             print("cicloterminado","Vel:",vel,"Giro",giro,"Contador",cont)
             cont=cont+1
-            time.sleep(4)
+            time.sleep(3)
         if cont==4:
             vel=220
             giro=220
