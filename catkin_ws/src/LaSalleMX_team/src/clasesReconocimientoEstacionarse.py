@@ -113,7 +113,7 @@ class streetDetection:
         #if stopSigns == 1:
         #   objetivo = "stop"
         #    return objetivo
-        elif estacionacion==1:
+        if estacionacion==1:
         	return "estacionate"
         else:
             centros=self.todosLosCentroidesDamelos(cntBlanco,resblanco)
