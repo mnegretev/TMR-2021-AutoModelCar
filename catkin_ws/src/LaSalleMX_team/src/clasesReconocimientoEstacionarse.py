@@ -222,7 +222,7 @@ class streetDetection:
 	areaTotal = 0
         for c in cntAzul:
             area= cv2.contourArea(c)
-            if area > 800:
+            if area > 700:
                 #print("Imprimir por que encontre un puto carro")
                 numObjetos+=1
                 areaTotal = areaTotal + area
@@ -278,13 +278,13 @@ class streetDetection:
             self.publisher2(giro,vel)
             print("cicloterminado","Vel:",vel,"Giro",giro,"Contador",cont)
             cont=cont+1
-            time.sleep(3)
+            time.sleep(2)
         if cont==4:
             vel=220
             giro=220
             self.publisher2(giro,vel)
             print("cicloterminado","Vel:",vel,"Giro",giro,"Contador",cont)
-            time.sleep(3.7)
+            time.sleep(3.2)
             cont=cont+1
         # if cont==5:
         #     vel=-130
