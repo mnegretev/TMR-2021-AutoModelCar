@@ -66,6 +66,7 @@ class Master{
         int speed_pid;
         float kp_speed;
         int u_speed;
+        int med_speed = 635;
         std::vector<Task> task_pile; 
         int count_pass;
         std::chrono::steady_clock::time_point start;
@@ -143,6 +144,7 @@ class Master{
                             this->add_task(Task(MOVING_LEFT));
                             this->add_task(Task(PASSING));
                             count_pass++;
+                            med_speed = 435;
                             start =  std::chrono::steady_clock::now();
                             break;
                        }
@@ -164,7 +166,7 @@ class Master{
                 }
                 else{
                     for (auto obstacle : this->found_objects){
-                        if( (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > 3750) && (obstacle.y == 0.0 || (obstacle.y <= 360.0 && obstacle.y >= 300.0))){
+                        if( (std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > 3000) && (obstacle.y == 0.0 || (obstacle.y <= 360.0 && obstacle.y >= 300.0))){
                             stop_car();
                             this->remove_task();
                             break;
@@ -243,9 +245,9 @@ class Master{
             else if(angle_pd >= 135)
 	            angle_pd = 135;
             u_speed = static_cast<int>(kp_speed * dist_now);
-            speed_pid = - 435 + abs(u_speed);
-            if(speed_pid < - 435)
-	            speed_pid = - 435;
+            speed_pid = - med_speed + abs(u_speed);
+            if(speed_pid < - med_speed)
+	            speed_pid = - med_speed;
             else if(speed_pid > 0)
 	            speed_pid = 0;
             angle_last = angle_pd;
