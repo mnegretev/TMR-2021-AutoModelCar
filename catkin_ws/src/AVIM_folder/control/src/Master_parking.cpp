@@ -218,7 +218,7 @@ class Master{
                 end =  std::chrono::steady_clock::now();
                 speed_pid = 150;
                 angle_pd = 0;
-                if(std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > 750){
+                if(std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() > 600){
                     speed_pid = 0;
                     angle_pd = 90;
                     this->remove_task();
