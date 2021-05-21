@@ -110,9 +110,9 @@ class streetDetection:
         #     objetivo="inter"
         #     return objetivo
         
-        if stopSigns == 1:
-            objetivo = "stop"
-            return objetivo
+        #if stopSigns == 1:
+        #   objetivo = "stop"
+        #    return objetivo
         elif estacionacion==1:
         	return "estacionate"
         else:
