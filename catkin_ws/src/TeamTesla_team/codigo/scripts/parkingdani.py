@@ -296,13 +296,13 @@ def callback(data):
             dire.publish(150)
             vel.publish(-100)
 
-            time.sleep(3.6)
+            time.sleep(3.8)
             vel.publish(0)
 
             time.sleep(1)
 
             dire.publish(30)
-            vel.publish(50)
+            vel.publish(30)
 
             time.sleep(1.6)
 
