@@ -271,7 +271,7 @@ class streetDetection:
             self.publisher2(giro,vel)
             print("cicloterminado","Vel:",vel,"Giro",giro,"Contador",cont)
             cont=cont+1
-            time.sleep(15)
+            time.sleep(12)
         if cont==3:
             vel=300
             giro=-30
